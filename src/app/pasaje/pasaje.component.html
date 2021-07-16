@@ -1,0 +1,39 @@
+<h2>Ingrese los datos de VENTA:</h2>
+    <form [formGroup]="ventaForm" name="ventaForm">
+        
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <textarea matInput placeholder="Ejemplo: Carlos" type="text" formControlName="nombre"></textarea>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de venta</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechaVenta">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+        
+        <mat-form-field>
+            <mat-label>Destino</mat-label>
+            <textarea matInput placeholder="Ejemplo: Bariloche" type="text" formControlName="destino"></textarea>
+        </mat-form-field>
+        <br> 
+
+        <mat-form-field>
+            <mat-label>Precio</mat-label>
+            <input matInput placeholder="Ejemplo: 500" type="number" formControlName="precio">
+        </mat-form-field>
+        <br>
+
+        <button mat-raised-button (click)="guardarDatos()" [disabled]="ventaForm.invalid">Guardar</button>
+    </form>
+
+
+<br>
+<div *ngIf="venta"> 
+    <app-datos [infoVenta]="venta" (eventoPrecioFinal)="onRecibe($event)"></app-datos>
+</div>
+
+<h2 *ngIf="mostrar">{{ventaForm.value.nombre}} este es el precio final de la venta: {{precioFinal}}</h2>

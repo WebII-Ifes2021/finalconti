@@ -1,0 +1,18 @@
+<h2>Valores recibidos en Detalle:</h2>
+<h2>Valores recibidos en Detalle:</h2>
+    Nombre: {{infoVenta.nombre}}
+    <br>
+    Fecha venta: {{infoVenta.fechaVenta | date}}
+    <br>
+    Destino: {{infoVenta.destino}}
+    <br>
+    Precio: {{infoVenta.precio}}
+    <br>
+
+    <mat-form-field>
+        <mat-label>Porcentaje</mat-label>
+        <input matInput placeholder="Ejemplo: 10" type="text" [(ngModel)]="porcentaje">
+    </mat-form-field>
+    <br>
+
+    <button  mat-raised-button (click) = "calcularPrecioFinal()">Calcular Precio Final</button>
